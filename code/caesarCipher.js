@@ -1,10 +1,19 @@
-function caesarCipher(str, x) {
+function caesarCipher(str, key) {
     let alpha = "abcdefghijklmnopqrstuvxyz".split("");
+    let c = ""
     str = str.split("");
+    let num = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     for (let i = 0; i < str.length; i++) {
-        let s = str[i]
-        str[i] = alpha[(alpha.indexOf(s) + x) % 26]
+        if (str[i] == " ") {
+            c += " ";
+            continue
+        }
+        else if (num.includes(str[i])) {
+            c += str[i];
+            continue
+        }
+        c += alpha[((alpha.indexOf(str[i])) + key) % 26]
     }
-    return str.join("")
+    return c
 }
 module.exports = caesarCipher;
